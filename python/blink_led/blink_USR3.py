@@ -44,7 +44,7 @@ Error conditions:
 # ------------------------------------------------------------------------
 # Imports
 # ------------------------------------------------------------------------
-import Adafruit_BBIO.GPIO as LED
+import Adafruit_BBIO.GPIO as GPIO
 import time
 
 # ------------------------------------------------------------------------
@@ -52,14 +52,14 @@ import time
 # ------------------------------------------------------------------------
 if __name__ == "__main__":
     # Create LED object for USR3
-    usr3 = LED.LED("USR3")
+    GPIO.setup("USR3", GPIO.OUT)
 
     try:
         while True:
-            usr3.on()
-            time.sleep(0.1)   # LED ON for 0.1 seconds
-            usr3.off()
-            time.sleep(0.1)   # LED OFF for 0.1 seconds
+            GPIO.output("USR3", GPIO.HIGH)
+            time.sleep(0.1)   # On for 0.1 s
+            GPIO.output("USR3", GPIO.LOW)
+            time.sleep(0.1)   # Off for 0.1 s
 
     except KeyboardInterrupt:
         # Turn off LED before exiting
